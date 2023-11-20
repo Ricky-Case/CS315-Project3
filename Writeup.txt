@@ -1,0 +1,13 @@
+Overall:
+Include instructions for how to compile and run your code in your writeup.
+
+Priority Queue:
+Explain any implementation choices you had to make in the final report (such as underlying data structure), and also include the text representation of your graph (described above)!
+
+Breadth First Search:
+Explain any implementation choices you had to make in the final report (such as how ties were broken).
+Be sure to include your shortest paths in the writeup!
+
+Dijkstra's Algorithm:
+- Explain any implementation choices you had to make in the final report (such as how ties were broken).
+- Remember to include the shortest path and answers to questions in the writeup!
