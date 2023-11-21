@@ -28,6 +28,25 @@ int main()
 	// Print the smallest element.
 	std::cout << std::endl << "The lowest-weight edge is between " << minElement[0] << " and " << minElement[1] << ", at: " << minElement[2] << std::endl;	// TODO: Determine if this line is this necessary
 
+	std::vector<std::vector<std::string> > heapData = minHeap.GetData();
+
+	std::cout << "Printing heapData..." << std::endl;
+
+	for (int index1 = 0; index1 < heapData.size(); index1++)
+	{
+		for (int index2 = 0; index2 < heapData[index1].size(); index2++)
+		{
+			std::cout << heapData[index1].at(index2) << " ";
+		}
+
+		std::cout << std::endl;
+	}
+
+	// Graph<std::string> graph;
+
+	// graph.BuildGraph(heapData);
+	// graph.PrintData();
+
 
 	
 	// Breadth First Search (20 points)

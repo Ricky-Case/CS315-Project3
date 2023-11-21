@@ -2,7 +2,6 @@
 #define GRAPHS_H
 
 #include <map>
-#include <set>
 #include <queue>
 #include <iostream>
 
@@ -13,6 +12,8 @@ template <typename T>
 class Graph
 {
 public:
+	void BuildGraph(std::vector<std::vector<T> >&);
+	void PrintData();
 
 	// Check to see if an edge exists between two points.
     bool HasEdge(T T1, T T2) const;
@@ -31,7 +32,7 @@ public:
 
 private:
     //represent the mapping from a Vertex, say u (key) to a set of vertices (value) which directly connect to u
-    std::map<T, std::set<T> > mapAdjacentPoints;
+    std::vector<std::vector<T> > adjacentPoints;
 };
 
 #endif

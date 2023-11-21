@@ -6,7 +6,7 @@
 void MinHeap::Insert(std::vector<std::string> adjacentVerteces)
 {
 	heap.push_back(adjacentVerteces);
-	DecreaseKey(heap.size() - 1);
+	DecreaseKey(heap.size() + 1);
 }
 
 std::vector<std::string> MinHeap::ExtractMin()
@@ -22,9 +22,11 @@ std::vector<std::string> MinHeap::ExtractMin()
 
 int MinHeap::GetSize() { return heap.size(); }
 
+std::vector<std::vector<std::string> > MinHeap::GetData() { return heap; }
+
 void MinHeap::DecreaseKey(int index)
 {
-	int parentIndex = (index - 1) / 2;
+	int parentIndex = index / 2;
 
 	// If the current element is smaller than its parent, swap them.
 	if (stoi(heap[index][2]) < stoi(heap[parentIndex][2]))
@@ -54,3 +56,74 @@ void MinHeap::Heapify(int index)
 }
 
 #endif
+
+//**********************//
+//******PSEUDOCODE******//
+//**********************//
+
+/*
+************HEAPS************
+Max-Heapify(heap, index)
+{
+	left = Left(index)
+	right = Right(index)
+
+	if (left <= heap.size && heap[left] > heap[right]) { largest = left; }
+	else { laregest = right; }
+	
+	if (right <= heap.size && heap[right] > heap[left]) { largest = right; }
+	
+	if (largest != index)
+	{
+		swap(heap[index], heap[largest]);
+		Max-Heapify(heap, largest);
+	}
+}
+
+Build-Max-Heap(heap)
+{
+	heap.size = heap.length();
+
+	for (index = floor(heap.length()/2); index > 0; index--) { Max-Heapify(heap, index); }
+}
+
+Heapsort(heap)
+{
+	Build-Max-Heap(heap);
+
+	for (index = heap.length(); index > 1; index--)
+	{
+		swap(heap[1], heap[index]);
+		heap.size = (heap.size -1);
+		Max-Heapify(heap, 1);
+	}
+}
+
+Heap-Extract-Max(heap)
+{
+	if (heap.size < 1) { error "heap underflow"; }
+
+	max = heap[1];
+	heap[1] = heap[heap.size];
+}
+
+Heap-Increase-Key(heap, index, key)
+{
+	if (key < heap[index]) { error "new key is smaller than current key." }
+
+	heap[index] = key;
+
+	while (index > 1 && heap[parent(index)])
+	{
+		swap(heap[index], heap[parent(index)]);
+		index = parent(index);
+	}
+}
+
+Max-Heap-Insert(heap, key)
+{
+	heap.size = heap.size + 1;
+	heap[heap.size] = -infinity; // remove.
+	Heap-Increase-Key(heap, heap.size, key);
+}
+*/
