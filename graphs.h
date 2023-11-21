@@ -19,6 +19,10 @@ public:
 
     // Add an edge between two points.
     void AddEdge(T T1, T T2);
+	
+	void PrintData();
+
+	void BuildGraph(std::vector<std::vector<T> >&);
 
     // Apply BFS to find the shortest path from the starting point to the destination.
     // Return the distnace from the start to the finish.
@@ -31,7 +35,7 @@ public:
 
 private:
     //represent the mapping from a Vertex, say u (key) to a set of vertices (value) which directly connect to u
-    std::map<T, std::set<T> > mapAdjacentPoints;
+    std::vector<std::vector<T> > adjacentPoints;
 };
 
 #endif

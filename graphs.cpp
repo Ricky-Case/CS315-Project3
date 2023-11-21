@@ -1,14 +1,54 @@
 #ifndef GRAPHS_CPP
 #define GRAPHS_CPP
 
-#include "Graphs.h"
+#include "graphs.h"
+
+template<typename T>
+void Graph<T>::BuildGraph(std::vector<std::vector<T> >& adjacentVerteces)
+{
+	std::cout << "Building Graph!" << std::endl;
+	
+	for (int outerIndex = 0; outerIndex < adjacentVerteces.size(); outerIndex++)
+	{
+		adjacentPoints.push_back(adjacentVerteces[outerIndex]);
+
+		std::cout << "Element " << outerIndex << "..." << std::endl
+				  << "Position 1: " << adjacentPoints[outerIndex][0] << std::endl
+				  << "Position 2: " << adjacentPoints[outerIndex][1] << std::endl
+				  << "Position 3: " << adjacentPoints[outerIndex][2] << std::endl;
+
+		// for (int innerIndex = 0; innerIndex < adjacentVerteces[outerIndex].size(); innerIndex++)
+		// {
+		// 	std::cout << "Position " << innerIndex << ": " << adjacentVerteces[outerIndex][innerIndex];
+
+		// 	adjacentPoints[outerIndex][innerIndex] = adjacentVerteces[outerIndex][innerIndex];
+		// }
+	}
+
+	std::cout << std::endl << std::endl;
+}
+
+template<typename T>
+void Graph<T>::PrintData()
+{
+	std::cout << "Printing Graph Data!" << std::endl << std::endl;
+	
+	for (int outerIndex = 0; outerIndex < adjacentPoints.size(); outerIndex++)
+	{
+		for (int innerIndex = 0; innerIndex < adjacentPoints[outerIndex].size(); innerIndex++)
+		{
+			std::cout << adjacentPoints[outerIndex][innerIndex] << " ";
+		}
+		std::cout << std::endl;
+	}
+}
 
 // Check to see if an edge exists between two points.
 template <typename T>
 bool Graph<T>::HasEdge(T T1, T T2) const
 {
 	bool hasEdge = false;
-	std::set<T> TSet = mapAdjacentPoints.at(T1);
+	std::vector<T> TSet = adjacentPoints.at(T1);
 	for(auto index = TSet.begin(); index != TSet.end(); index++)
 	{
 		if (T2 == *index)
@@ -24,8 +64,8 @@ bool Graph<T>::HasEdge(T T1, T T2) const
 template <typename T>
 void Graph<T>::AddEdge(T T1, T T2)
 {
-	mapAdjacentPoints[T1].insert(T2);
-	mapAdjacentPoints[T2].insert(T1);
+	adjacentPoints[T1].insert(T2);
+	adjacentPoints[T2].insert(T1);
 }
 
 
@@ -33,7 +73,7 @@ template <typename T>
 int Graph<T>::BFS(T& T1, T& T2, std::map<T, int>& T3, std::map<T, T>& T4)
 {
 	// For each vertex in the graph...
-	for (auto index = mapAdjacentPoints.begin(); index != mapAdjacentPoints.end(); index++)
+	for (auto index = adjacentPoints.begin(); index != adjacentPoints.end(); index++)
 	{
 		T3[index->first] = -1;
 	}
@@ -65,7 +105,7 @@ int Graph<T>::BFS(T& T1, T& T2, std::map<T, int>& T3, std::map<T, T>& T4)
 		pointQueue.pop();
 
 		// For each vertex that is adjacent to "current"...
-		for (auto index : mapAdjacentPoints.at(current))
+		for (auto index : adjacentPoints.at(current))
 		{
 			// If T3 at given index is equal to -1...
 			if (T3.at(index) == -1)

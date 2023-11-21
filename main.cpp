@@ -19,14 +19,15 @@ int main()
 	MinHeap minHeap = BuildMinHeap(userData);
 	std::vector<std::string> vertices = DetermineVertices(userData);
 
-	// Extract the smallest element from the heap.
-	std::vector<std::string> minElement = minHeap.ExtractMin();
+	minHeap.PrintMinimumElement();
 	
+	// Extract the smallest element from the heap.
+	// std::vector<std::string> minElement = minHeap.ExtractMin();
+
 	std::cout << std::endl << "Vertices: " << std::endl;
 	for (int index = 0; index < vertices.size(); index++) { std::cout << vertices[index] << std::endl; }
 
-	// Print the smallest element.
-	std::cout << std::endl << "The lowest-weight edge is between " << minElement[0] << " and " << minElement[1] << ", at: " << minElement[2] << std::endl;	// TODO: Determine if this line is this necessary
+	
 
 
 	

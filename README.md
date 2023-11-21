@@ -69,3 +69,7 @@ Prim's algorithm is commonly used to construct minimum spanning trees. For extra
 2) Began coding Breadth-First-Search implementation.
 	- Imported work from a previous project which used this algorithm.
 	- Refactored original code to work for this project.
+- ISSUE: The minimum element is being removed from my heap.
+
+## 20231121
+1) Discovered the cause of my issue. I was calling "ExtractMinimum()"... lol

@@ -17,6 +17,8 @@ public:
 	// Extracts the smallest element from the heap.
 	std::vector<std::string> ExtractMin();
 
+	void PrintMinimumElement();
+
 	// Returns the size of the heap.
 	int GetSize();
 

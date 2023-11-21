@@ -22,6 +22,8 @@ std::vector<std::string> MinHeap::ExtractMin()
 
 int MinHeap::GetSize() { return heap.size(); }
 
+void MinHeap::PrintMinimumElement() { std::cout << "Minimum Element: " << heap[0][0] << " and " << heap[0][1] << ", at " << heap[0][2] << std::endl; }
+
 void MinHeap::DecreaseKey(int index)
 {
 	int parentIndex = (index - 1) / 2;
